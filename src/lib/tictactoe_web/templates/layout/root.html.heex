@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <%= csrf_meta_tag() %>
+    <title>Tic Tac Toe game in Elixir</title>
+    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/css/app.css")}/>
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/js/app.js")}></script>
+  </head>
+  <body>
+    <div class="flex justify-end p-5">
+      <%= if @conn.private.plug_session["player_name"] do %>
+        <%= link to: Routes.logout_path(@conn, :delete), method: :delete do %>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        <% end %>
+      <% end %>
+    </div>
+    <%= @inner_content %>
+  </body>
+</html>
+
